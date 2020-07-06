@@ -95,7 +95,7 @@ export default class dthingz extends Component {
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                                            Modules
+                                            Modules :{mappedData.modules.length}
                                         </Typography>
                                     </Grid>
                                 </Grid>
