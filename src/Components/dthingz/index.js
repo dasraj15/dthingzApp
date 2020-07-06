@@ -1,17 +1,26 @@
 import React, { Fragment, Component } from 'react';
-import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography, makeStyles } from '@material-ui/core';
+import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography, makeStyles, List } from '@material-ui/core';
 import axios from '../../axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
-        maxWidth: '36ch',
-        backgroundColor: theme.palette.background.paper,
+        width: '50%',
+        maxWidth: '18ch',
+        backgroundColor: '#eeeeee',
+        padding: '5px',
     },
     inline: {
         display: 'inline',
     },
 }));
+
+const style = {
+    backgroundColor: 'white',
+    padding: '8px',
+    font: 'inherit',
+    border: '2x solid blue',
+    cursor: 'pointer',
+}
 
 export default class dthingz extends Component {
     constructor(props) {
@@ -26,34 +35,27 @@ export default class dthingz extends Component {
             const data = res.data
             console.log(data)
             const modules = data.map(mappedData =>
-                // <div>
-                //     <p>{mappedData.id}</p>
-                //     <p>{mappedData.title_short}</p>
-                //     <p>{mappedData.desc_short}</p>
-                //     <p>{mappedData.headerimg_small}</p>
-                // </div>
-
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={mappedData.headerimg_small} />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary={mappedData.title_short}
-                        secondary={
-                            <Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    style={useStyles.inline}
-                                    color="textPrimary"
-                                >
-                                    {/* {mappedData.desc_long} */}
-                                </Typography>
-                                {mappedData.desc_long}
-                            </Fragment>
-                        }
-                    />
-                </ListItem>
+                    <List className={useStyles.root}>
+                        <ListItem alignItems="flex-start" >
+                            <ListItemAvatar>
+                                <Avatar alt="Remy Sharp" src={mappedData.headerimg_small} />
+                            </ListItemAvatar>
+                            <ListItemText style={{cursor:'pointer',width:'60%'}}
+                                primary={mappedData.title_short}
+                                secondary={
+                                    <Fragment>
+                                        <Typography
+                                            component="span"
+                                            variant="body2"
+                                            style={useStyles.inline}
+                                            color="inherit">
+                                        </Typography>
+                                        {mappedData.desc_long}
+                                    </Fragment>
+                                }
+                            />
+                        </ListItem>
+                    </List>
             );
 
             this.setState({
@@ -71,27 +73,6 @@ export default class dthingz extends Component {
 
     render() {
         return (
-            // <ListItem alignItems="flex-start">
-            //     <ListItemAvatar>
-            //         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            //     </ListItemAvatar>
-            //     <ListItemText
-            //         primary="Brunch this weekend?"
-            //         secondary={
-            //             <Fragment>
-            //                 <Typography
-            //                     component="span"
-            //                     variant="body2"
-            //                     style={useStyles.inline}
-            //                     color="textPrimary"
-            //                 >
-            //                     Ali Connors
-            //                 </Typography>
-            //                 {" — I'll be in your neighborhood doing errands this…"}
-            //             </Fragment>
-            //         }
-            //     />
-            // </ListItem>
             <div>
                 {this.state.modules}
             </div>

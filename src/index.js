@@ -8,4 +8,4 @@ const styles = {
     textAlign: 'center'
 }
 
-render(<App styles={styles} />, document.getElementById('root'));
+render(<App style={styles} />, document.getElementById('root'));

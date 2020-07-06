@@ -8,7 +8,6 @@ export default class extends Component {
     render() {
         return <Fragment>
             <Header />
-            <PaperConstant />
             <DthingzApp />
             <Footer />
         </Fragment>
