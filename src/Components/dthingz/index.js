@@ -2,19 +2,6 @@ import React, { Fragment, Component } from 'react';
 import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography, makeStyles, List, Paper, Grid, ButtonBase } from '@material-ui/core';
 import axios from '../../axios';
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//         width: '50%',
-//         maxWidth: '18ch',
-//         backgroundColor: '#eeeeee',
-//         border: '2x solid black',
-//         padding: '5px',
-//     },
-//     inline: {
-//         display: 'inline',
-//     },
-// }));
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -60,12 +47,12 @@ export default class dthingz extends Component {
             const modules = data.map(mappedData =>
                 <div style={{
                     flexGrow: 1,
-                    padding: '5px'
+                    padding: '10px'
                 }}>
                     <Paper style={{
                         padding: '20px',
-                        margin: '',
-                        maxWidth: '100%'
+                        margin: 'auto auto',
+                        maxWidth: '95%',
                     }}
                         elevation={3}>
                         <Grid container spacing={2}>

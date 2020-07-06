@@ -1,38 +1,46 @@
-import React, { Component } from 'react';
-import { Paper, CardMedia, Card, CardActionArea, makeStyles } from "@material-ui/core";
+import React from 'react';
+import { Paper, makeStyles, Typography } from '@material-ui/core';
+import LeftImage from '../../Images/leftscreen.jpg';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 345,
+        display: 'flex',
+        '& > *': {
+            margin: 'auto auto',
+            width: '50%',
+            height: theme.spacing(60),
+        },
     },
-    media: {
-        height: 140,
-    },
-});
+}));
 
-export default class PaperConstant extends Component {
-
-    constructor(props) {
-        super(props);
+const styles = {
+    paperContainer: {
+        backgroundImage: "url(https://www.udacity.com/assets/iridium/images/shared/school-of/programming.jpg)"
     }
+};
 
-    render() {
-        return (
-
-            <div>
-                {/* <Paper elevation={0} />
-                <Paper /> */}
-
-                <Card>
-                    <CardActionArea>
-                        <CardMedia
-                            className={useStyles.media}
-                            image="https://res.cloudinary.com/drox4mex4/image/upload/c_scale,e_art:athena,h_200,r_16,w_200/v1579166570/pythonlogo.png"
-                            title="Contemplative Reptile"
-                        />
-                    </CardActionArea>
-                </Card>
-            </div>
-        )
+const leftStyle = {
+    paperContainer: {
+        backgroundImage: "url(https://www.wallcover.com/media/catalog/product/cache/5/image/b070ed80d8313f2b57d9bcdf5b3c986c/1/2/125228a_1.jpg)"
     }
 }
+
+const PaperConstant = props => {
+    const classes = useStyles();
+    return (
+        <div className={classes.root}>
+            <Paper style={leftStyle.paperContainer} variant="outlined" square>
+                <Typography color='inherit' gutterBottom variant="h2" style={{textAlign:'center',margin:'15%' }}>
+                    dthingz Labs!
+                </Typography>
+                <Typography variant="h5" gutterBottom style={{textAlign:'center'}}>
+                    Explore courses down here!
+                </Typography>
+            </Paper>
+            <Paper style={styles.paperContainer} variant="outlined" square />
+        </div>
+    )
+
+}
+
+export default PaperConstant;
