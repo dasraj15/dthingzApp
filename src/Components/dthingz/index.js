@@ -1,16 +1,39 @@
 import React, { Fragment, Component } from 'react';
-import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography, makeStyles, List } from '@material-ui/core';
+import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography, makeStyles, List, Paper, Grid, ButtonBase } from '@material-ui/core';
 import axios from '../../axios';
+
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         width: '50%',
+//         maxWidth: '18ch',
+//         backgroundColor: '#eeeeee',
+//         border: '2x solid black',
+//         padding: '5px',
+//     },
+//     inline: {
+//         display: 'inline',
+//     },
+// }));
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '50%',
-        maxWidth: '18ch',
-        backgroundColor: '#eeeeee',
-        padding: '5px',
+        flexGrow: 1,
+        padding: '5px'
     },
-    inline: {
-        display: 'inline',
+    paper: {
+        padding: theme.spacing(2),
+        margin: '',
+        maxWidth: 500,
+    },
+    image: {
+        width: 128,
+        height: 128,
+    },
+    img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '100%',
+        maxHeight: '100%',
     },
 }));
 
@@ -35,27 +58,77 @@ export default class dthingz extends Component {
             const data = res.data
             console.log(data)
             const modules = data.map(mappedData =>
-                    <List className={useStyles.root}>
-                        <ListItem alignItems="flex-start" >
-                            <ListItemAvatar>
-                                <Avatar alt="Remy Sharp" src={mappedData.headerimg_small} />
-                            </ListItemAvatar>
-                            <ListItemText style={{cursor:'pointer',width:'60%'}}
-                                primary={mappedData.title_short}
-                                secondary={
-                                    <Fragment>
-                                        <Typography
-                                            component="span"
-                                            variant="body2"
-                                            style={useStyles.inline}
-                                            color="inherit">
+                // <div style={{border: '2x solid black',}}>
+                //     <List className={useStyles.root}>
+                //         <ListItem alignItems="flex-start" >
+                //             <ListItemAvatar>
+                //                 <Avatar alt="Remy Sharp" src={mappedData.headerimg_small} />
+                //             </ListItemAvatar>
+                //             <ListItemText style={{ cursor: 'pointer', width: '60%' }}
+                //                 primary={mappedData.title_short}
+                //                 secondary={
+                //                     <Fragment>
+                //                         <Typography
+                //                             component="span"
+                //                             variant="body2"
+                //                             style={useStyles.inline}
+                //                             color="inherit">
+                //                         </Typography>
+                //                         {mappedData.desc_long}
+                //                     </Fragment>
+                //                 }
+                //             />
+                //         </ListItem>
+                //     </List>
+                // </div>
+
+                <div style={{
+                    flexGrow: 1,
+                    padding: '5px'
+                }}>
+                    <Paper style={{
+                        padding: '20px',
+                        margin: '',
+                        maxWidth: '100%',
+                    }}>
+                        <Grid container spacing={2}>
+                            <Grid item>
+                                <ButtonBase style={{
+                                    width: 128,
+                                    height: 128,
+                                }}>
+                                    <Avatar style={{
+                                        verticalAlign:'middle',
+                                        display: 'flex',
+                                        width: '100px',
+                                        height: '100px',
+                                        borderRadius: '50%',
+                                    }} alt="Remy Sharp" src={mappedData.headerimg_small} />
+                                </ButtonBase>
+                            </Grid>
+                            <Grid item xs={12} sm container>
+                                <Grid item xs container direction="column" spacing={2}>
+                                    <Grid item xs>
+                                        <Typography gutterBottom variant="subtitle1">
+                                            {mappedData.title_short}
                                         </Typography>
-                                        {mappedData.desc_long}
-                                    </Fragment>
-                                }
-                            />
-                        </ListItem>
-                    </List>
+                                        <Typography variant="body2" gutterBottom>
+                                            {mappedData.desc_long}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                                            Modules
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                                <Grid item>
+                                    <Typography variant="subtitle1">250 ₹</Typography>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </div>
             );
 
             this.setState({
