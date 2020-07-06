@@ -58,30 +58,6 @@ export default class dthingz extends Component {
             const data = res.data
             console.log(data)
             const modules = data.map(mappedData =>
-                // <div style={{border: '2x solid black',}}>
-                //     <List className={useStyles.root}>
-                //         <ListItem alignItems="flex-start" >
-                //             <ListItemAvatar>
-                //                 <Avatar alt="Remy Sharp" src={mappedData.headerimg_small} />
-                //             </ListItemAvatar>
-                //             <ListItemText style={{ cursor: 'pointer', width: '60%' }}
-                //                 primary={mappedData.title_short}
-                //                 secondary={
-                //                     <Fragment>
-                //                         <Typography
-                //                             component="span"
-                //                             variant="body2"
-                //                             style={useStyles.inline}
-                //                             color="inherit">
-                //                         </Typography>
-                //                         {mappedData.desc_long}
-                //                     </Fragment>
-                //                 }
-                //             />
-                //         </ListItem>
-                //     </List>
-                // </div>
-
                 <div style={{
                     flexGrow: 1,
                     padding: '5px'
@@ -89,8 +65,9 @@ export default class dthingz extends Component {
                     <Paper style={{
                         padding: '20px',
                         margin: '',
-                        maxWidth: '100%',
-                    }}>
+                        maxWidth: '100%'
+                    }}
+                        elevation={3}>
                         <Grid container spacing={2}>
                             <Grid item>
                                 <ButtonBase style={{
@@ -98,7 +75,7 @@ export default class dthingz extends Component {
                                     height: 128,
                                 }}>
                                     <Avatar style={{
-                                        verticalAlign:'middle',
+                                        verticalAlign: 'middle',
                                         display: 'flex',
                                         width: '100px',
                                         height: '100px',
