@@ -30,12 +30,15 @@ const PaperConstant = props => {
     return (
         <div className={classes.root}>
             <Paper style={leftStyle.paperContainer} variant="outlined" square>
-                <Typography color='inherit' gutterBottom variant="h2" style={{textAlign:'center',margin:'15%' }}>
-                    dthingz Labs!
-                </Typography>
-                <Typography variant="h5" gutterBottom style={{textAlign:'center'}}>
-                    Explore courses down here!
-                </Typography>
+                <div style={{ margin: '15%' }}>
+                    <Typography color='inherit' variant="h2" style={{ textAlign: 'center' }}>
+                        dthingz Labs!
+                    </Typography>
+                    <Typography variant="h5" gutterBottom style={{ textAlign: 'center', textJustify: 'inter-word', width: '50%', margin: 'auto auto' }}>
+                        Spend your time learning new technologies during this period.
+                        Explore courses down here!
+                    </Typography>
+                </div>
             </Paper>
             <Paper style={styles.paperContainer} variant="outlined" square />
         </div>
